@@ -121,4 +121,6 @@
 ### 18. To enable hot reloading, change the flag --open to --hot
 
 
-### 19. Now let us create a component called List in src/containers folder
+### 19. Now let us create a component called List in src/containers folder (container component)
+
+### 20. Further create a functional component in React called Card within src/components 
