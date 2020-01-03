@@ -114,7 +114,7 @@
 ### 16. Create a development server
         npm i -D webpack-dev-server
 
-### 17. Modify package.json file
+### 17. Modify package.json file (and then start the app)
             - "start": "webpack --mode development",
             + "start": "webpack-dev-server --mode development --open",
 
