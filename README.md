@@ -211,3 +211,81 @@
 
 ### 31. Now we can use the css class from bootstrap
         Add the appropriate class name to the App, List, Card component
+
+---------------------------------
+
+### 32. Install ESLint from npm by running the following command
+        npm i -D eslint eslint-loader eslint-plugin-react
+
+        ---first package eslint is the core package and help us identify any potentially problematic patterns in our JavaScript code
+        --- eslint-loader is a package that is used by Webpack to run ESLint every time we update our code
+        --- FInally eslint-plugin-react adds specific rules to ESLint for React applications
+
+### 33. COnfigure ESLint by first creating a file .eslintrc.js in the project's root directory and add the following code
+         module.exports= {
+            env: {
+                browser: true,
+                es6: true
+            },
+            parserOptions: {
+                ecmaFeatures: {
+                    jsx: true
+                },
+                ecmaVersion: 2018,
+                sourceType: 'module',
+            },
+            plugins: ['react'],
+            extends: ['eslint:recommended', 'plugin:react/recommended']
+        }
+
+        --- env:  field sets the actual environment our code will run in and will use es6 functions in it
+        --- parseOptions: fields adds extra configuration for using jsx and modern JavaScript
+        --- plugins: it is the section where we specify that our code uses react as framework
+        --- extends: field is where the recommended settings for eslint are used as well as framework specific settings for React
+
+### 34. NOw we will add the eslint configuration to webpack config by adding the following loader 
+           - use: {
+           -         loader: 'babel-loader',
+           - },
+
+           + use: ['babel-loader', 'eslint-loader'],
+
+
+### 35. NOw if you start the app you will get the following error
+        ERROR in ./src/components/Card.js
+        Module Error (from ./node_modules/eslint-loader/dist/cjs.js):
+
+        /home/ubuntu/training/react/movie-list-webpack/src/components/Card.js
+        3:17  error  'movie' is missing in props validation              react/prop-types
+        7:25  error  'movie.img' is missing in props validation          react/prop-types
+        7:29  error  'movie.img.src' is missing in props validation      react/prop-types
+        7:45  error  'movie.img' is missing in props validation          react/prop-types
+        7:49  error  'movie.img.alt' is missing in props validation      react/prop-types
+        9:25  error  'movie.ranking' is missing in props validation      react/prop-types
+        9:44  error  'movie.title' is missing in props validation        react/prop-types
+        9:60  error  'movie.year' is missing in props validation         react/prop-types
+        12:72  error  'movie.distributor' is missing in props validation  react/prop-types
+        13:67  error  'movie.amount' is missing in props validation       react/prop-types
+
+        ✖ 10 problems (10 errors, 0 warnings)
+
+        @ ./src/containers/List.js 2:0-38 39:27-31
+        @ ./src/index.js
+
+        ERROR in ./src/containers/List.js
+        Module Error (from ./node_modules/eslint-loader/dist/cjs.js):
+
+        /home/ubuntu/training/react/movie-list-webpack/src/containers/List.js
+        37:36  error  Missing "key" prop for element in iterator  react/jsx-key
+
+        ✖ 1 problem (1 error, 0 warnings)
+
+        @ ./src/index.js 3:0-37 13:42-46
+        Child html-webpack-plugin for "index.html":
+            1 asset
+
+
+### 36. Now we need to fix this by checking the prop types in each of the component
+        npm i prop-types
+
+### 37. Add the propTypes validation in the Card component        
