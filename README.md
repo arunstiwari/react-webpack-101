@@ -124,3 +124,48 @@
 ### 19. Now let us create a component called List in src/containers folder (container component)
 
 ### 20. Further create a functional component in React called Card within src/components 
+
+
+----
+### 21. Our intention is that Card component have to display the Movie information like ranking, title, year, distriutor, image, amount, etc..So we need to refactor our Card Component
+        const Card = ({ movie }) => {
+            return (
+                <div>
+                    <h2>{`#${movie.ranking} - ${movie.title} (${movie.year})`}</h2>
+                    <img src={movie.img.src} alt={movie.img.alt} width='200'></img>
+                    <p>{`Distributor: ${movie.distributor}`}</p>
+                    <p>{`Amount: ${movie.amount}`}</p>
+                </div>
+            )
+        }
+        
+### 22. Now modify the List component. Add the state data to represent the movies data and loading to indicate whether the data has been fetched from API or not
+         state = {
+            data: [],
+            loading: true,
+        }
+
+### 23. After adding the state, let us define the logic to fetch the data from API backend for which we need to discuss the componentDidMount() method (List component)
+        async componentDidMount() {
+            const movies = await fetch('../../assets/data.json');
+            const moviesJson = await movies.json();
+
+            if (moviesJson) {
+                this.setState({
+                    data: moviesJson,
+                    loading: false
+                });
+            }
+        }
+
+### 24. Modify the List component to support rendering the list of movies
+         render() {
+            const {data, loading} = this.state;
+
+            if (loading) {
+                return <div>Loading...</div>
+            }
+            return data.map(movie => <Card key={movie.id} movie={movie} />)
+        }
+
+### 25. Create assets folder at the root of the application and create a file named data.json. Add the json content in the file         
