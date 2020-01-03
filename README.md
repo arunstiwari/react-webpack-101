@@ -171,3 +171,44 @@
 ### 25. Create assets folder at the root of the application and create a file named data.json. Add the json content in the file
 
 ### 26. Create media folder at the root of the application and add images file in the folder
+
+
+
+--------------------
+
+
+### 27. To use Bootstrap let us add that as dependency
+        npm i bootstrap
+
+### 28. Now add the import statement in the index.js
+        import 'bootstrap/dist/css/bootstrap.min.css'
+
+### 29. IF we try to run the application we may get an error "YOu may need an appropriate loader to handle this file type". We need to add loaders to webpack to compile the css 
+        npm i -D css-loader style-loader
+
+### 30. After that we need to add the following rules the webpack configuration in the webpac.config.js
+        module.exports = {
+            module: {
+                rules: [
+                    {
+                        test: /\.js$/,
+                        exclude: /node_modules/,
+                        use: {
+                            loader: 'babel-loader',
+                        },
+                    },
+            +        {
+            +            test: /\.js$/,
+            +            exclude: /node_modules/,
+            +            use: ['style-loader', 'css-loader']
+            +       },
+                ],
+            },
+            plugins: [htmlPlugin],
+        }
+       
+       ------
+       Order in which loaders are added is important since css-loader handles the compilation of the CSS file and style-loader adds the compiled CSS Files to the React DOM. Webpack reads these settings from right to left and the CSS Needs to be compiled before it is attached to the DOM.
+
+### 31. Now we can use the css class from bootstrap
+        Add the appropriate class name to the App, List, Card component
