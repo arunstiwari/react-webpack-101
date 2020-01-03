@@ -168,4 +168,6 @@
             return data.map(movie => <Card key={movie.id} movie={movie} />)
         }
 
-### 25. Create assets folder at the root of the application and create a file named data.json. Add the json content in the file         
+### 25. Create assets folder at the root of the application and create a file named data.json. Add the json content in the file
+
+### 26. Create media folder at the root of the application and add images file in the folder
