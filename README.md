@@ -119,3 +119,6 @@
             + "start": "webpack-dev-server --mode development --open",
 
 ### 18. To enable hot reloading, change the flag --open to --hot
+
+
+### 19. Now let us create a component called List in src/containers folder
