@@ -110,3 +110,12 @@
         }
 
 ### 15. Now if we run npm run start, new script tag would have been inserted in the body of index.html, Now if we open dist/index.html we will see the react code
+
+### 16. Create a development server
+        npm i -D webpack-dev-server
+
+### 17. Modify package.json file
+            - "start": "webpack --mode development",
+            + "start": "webpack-dev-server --mode development --open",
+
+### 18. To enable hot reloading, change the flag --open to --hot
