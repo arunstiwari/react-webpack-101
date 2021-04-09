@@ -1,3 +1,5 @@
+https://www.valentinog.com/blog/webpack/#how-to-set-up-react-webpack-5-and-babel-from-scratch
+https://www.edc4it.com/en/blog/webpack-tutorial.html
 ### 1. npm init -y
 
 ### 2. Setup webpack
